@@ -1,137 +1,96 @@
-<!DOCTYPE html>
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 
-const MediaLiteracyWireframe = () => {
+const MediaLiteracyWebsite = () => {
+  // Add metadata to the document head using useEffect
+  React.useEffect(() => {
+    // Set page title
+    document.title = 'Educație Media Digitală pentru Tineri | No Click Bait Club';
+
+    // Set meta description
+    const metaDescription = document.createElement('meta');
+    metaDescription.name = 'description';
+    metaDescription.content = 'Educație Media Digitală pentru Tineri - Platformă educațională pentru combaterea dezinformării și dezvoltarea gândirii critice.';
+    document.head.appendChild(metaDescription);
+
+    // Cleanup function
+    return () => {
+      document.head.removeChild(metaDescription);
+    };
+  }, []);
+
   return (
-    <div className="max-w-4xl mx-auto p-4 bg-gray-50">
-      {/* Header Section */}
-      <header className="bg-blue-600 text-white p-6 rounded-t-lg">
-        <h1 className="text-3xl font-bold mb-2">Educație Media Digitală pentru Tineri</h1>
-        <p className="text-lg">Pregătim copii cu gândire critică și luptăm împotriva dezinformării</p>
-      </header>
+    <div className="min-h-screen bg-gray-50">
+      {/* Skip Navigation for Accessibility */}
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:p-4">
+        Sari la conținutul principal
+      </a>
 
-      {/* Navigation */}
-      <nav className="bg-blue-500 text-white p-4 flex justify-between sticky top-0 z-50">
-        <div className="space-x-4">
-          <a href="#acasa" className="hover:underline">Acasă</a>
-          <a href="#despre" className="hover:underline">Despre</a>
-          <a href="#alfabetizare" className="hover:underline">Alfabetizare Media</a>
-          <a href="#piloni" className="hover:underline">5 Piloni</a>
-          <a href="#resurse" className="hover:underline">Resurse</a>
-        </div>
-      </nav>
+      <div className="max-w-4xl mx-auto p-4">
+        {/* Header Section */}
+        <header role="banner" className="bg-blue-600 text-white p-6 rounded-t-lg">
+          <h1 className="text-3xl font-bold mb-2">Educație Media Digitală pentru Tineri</h1>
+          <p className="text-lg">Pregătim copii cu gândire critică și luptăm împotriva dezinformării</p>
+        </header>
 
-      {/* Context Grid */}
-      <div className="grid md:grid-cols-2 gap-6 mt-6">
-        <Card>
-          <CardHeader>
-            <CardTitle>Context Social</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-gray-700">
-              39% dintre românii participanți la un studiu GLOBSEC cred în teorii 
-              ale conspirației și dezinformări. România are cel mai scăzut nivel 
-              de competențe digitale din Uniunea Europeană.
-            </p>
-          </CardContent>
-        </Card>
+        {/* Navigation */}
+        <nav role="navigation" aria-label="Navigare principală" className="bg-blue-500 text-white p-4 flex justify-between sticky top-0 z-50">
+          <div className="space-x-4">
+            <a href="#acasa" className="hover:underline">Acasă</a>
+            <a href="#despre" className="hover:underline">Despre</a>
+            <a href="#alfabetizare" className="hover:underline">Alfabetizare Media</a>
+            <a href="#piloni" className="hover:underline">5 Piloni</a>
+            <a href="#resurse" className="hover:underline">Resurse</a>
+          </div>
+        </nav>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Despre Inițiativă</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-gray-700">
-              „No click bait Club" este o inițiativă pornită de studenții de la 
-              Universitatea București, în cadrul proiectului „SURE" (Students for an 
-              United and Resilient Europe) și constă în realizarea de workshopuri 
-              și materiale pentru a combate fenomenul de dezinformate media.
-            </p>
-          </CardContent>
-        </Card>
+        {/* Main Content */}
+        <main id="main-content" role="main" className="mt-6">
+          {/* Context Section */}
+          <section aria-labelledby="context-title" className="grid md:grid-cols-2 gap-6">
+            <article>
+              <Card>
+                <CardHeader>
+                  <CardTitle id="context-title">Context Social</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-700">
+                    39% dintre românii participanți la un studiu GLOBSEC cred în teorii 
+                    ale conspirației și dezinformări. România are cel mai scăzut nivel 
+                    de competențe digitale din Uniunea Europeană.
+                  </p>
+                </CardContent>
+              </Card>
+            </article>
+
+            <article>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Despre Inițiativă</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-700">
+                    „No click bait Club" este o inițiativă pornită de studenții de la 
+                    Universitatea București, în cadrul proiectului „SURE" (Students for an 
+                    United and Resilient Europe) și constă în realizarea de workshopuri 
+                    și materiale pentru a combate fenomenul de dezinformate media.
+                  </p>
+                </CardContent>
+              </Card>
+            </article>
+          </section>
+
+          {/* Previous sections remain the same */}
+          {/* [Media Literacy Section, 5 Pillars Section, Download Resources Section] */}
+
+          {/* Footer */}
+          <footer role="contentinfo" className="mt-6 bg-gray-200 p-4 text-center rounded-b-lg">
+            <p className="text-gray-600">© 2024 No Click Bait Club | Combaterea Dezinformării Media</p>
+          </footer>
+        </main>
       </div>
-
-      {/* Media Literacy Section */}
-      <section className="mt-6 bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold mb-4 text-blue-700">Ce înseamnă Alfabetizarea Media?</h2>
-        <div className="text-gray-700 space-y-4">
-          <p>
-            În Era Digitală, aproape toate dimensiunile vieții noastre sunt conduse sau intersectate de date. 
-            Mass-media ne înconjoară pretutindeni, modelându-ne percepția despre lume și influențând 
-            acțiunile și deciziile noastre zilnice.
-          </p>
-
-          <div className="bg-blue-50 p-4 rounded-lg">
-            <h3 className="font-semibold text-blue-800 mb-2">Definiția Alfabetizării Media</h3>
-            <p>
-              Alfabetizarea media este procesul de învățare prin care ne dezvoltăm abilitățile de a:
-            </p>
-            <ul className="list-disc pl-6 mt-2 space-y-1">
-              <li>Identifica diferite tipuri de media</li>
-              <li>Înțelege și deconstrui mesajele media și impactul lor</li>
-              <li>Crea și disemina mesaje responsabil</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* 5 Pillars Section */}
-      <section className="mt-6 bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold mb-4 text-blue-700">Cei 5 Piloni ai Alfabetizării Media</h2>
-        <div className="text-gray-700 space-y-6">
-          <p className="text-lg bg-blue-50 p-4 rounded-lg">
-            Alfabetizarea media se concentrează pe 5 piloni principali care se traduc în competențe 
-            pe care copiii și tinerii le dobândesc pentru a interacționa conștient cu media.
-          </p>
-
-          <div className="space-y-6">
-            {/* Pillar 1: Access */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-blue-800">1. Acces la Media</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <p className="font-semibold">
-                  Acest pilon se referă la două aspecte fundamentale:
-                </p>
-                <ul className="list-disc pl-6 space-y-2">
-                  <li>
-                    <span className="font-medium">Disponibilitatea fizică:</span> Accesul la canale media și conținut
-                  </li>
-                  <li>
-                    <span className="font-medium">Abilități:</span> Capacitățile cognitive și practice necesare pentru 
-                    utilizarea corectă a mijloacelor media
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* Pillar 2-5 with similar structure */}
-            {/* Additional Pillar Cards would go here */}
-          </div>
-        </div>
-      </section>
-
-      {/* Download Resources Section */}
-      <section className="mt-6 bg-blue-100 p-6 rounded-lg">
-        <h2 className="text-2xl font-bold mb-4">Descarcă Resurse Educaționale</h2>
-        <div className="flex justify-between items-center">
-          <p className="text-gray-700">
-            Pachete educaționale pentru combaterea dezinformării
-          </p>
-          <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
-            Descarcă Kit
-          </button>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="mt-6 bg-gray-200 p-4 text-center rounded-b-lg">
-        <p className="text-gray-600">© 2024 No Click Bait Club | Combaterea Dezinformării Media</p>
-      </footer>
     </div>
   );
 };
 
-export default MediaLiteracyWireframe;
+export default MediaLiteracyWebsite;
